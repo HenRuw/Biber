@@ -27,7 +27,18 @@ public class Essensausgabe
     }
 
     public boolean passtZusammen(Stack<Teller> stapel, Queue<Biber> schlange) {
-        return true;
+        if (stapel.top().getFlacherTeller() == schlange.front().getGroesse()){
+         return true;
+        }
+        return false;
+    }
+
+    public Stack<Teller> getTellerstapel() {
+        return tellerstapel;
+    }
+
+    public Queue<Biber> getBiberschlange() {
+        return biberschlange;
     }
 
     public static void main(String[] args) {
@@ -43,6 +54,8 @@ public class Essensausgabe
         programm.tellerHinzufuegen(new Teller(true));
         programm.tellerHinzufuegen(new Teller(false));
         programm.tellerHinzufuegen(new Teller(true));
+
+        System.out.println(programm.passtZusammen(programm.getTellerstapel(), programm.getBiberschlange()));;
     }
 
 }
