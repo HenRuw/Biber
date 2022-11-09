@@ -27,10 +27,43 @@ public class Essensausgabe
     }
 
     public boolean passtZusammen(Stack<Teller> stapel, Queue<Biber> schlange) {
-        if (stapel.top().getFlacherTeller() == schlange.front().getGroesse()){
-         return true;
+        Queue<Biber> copyBiber = new Queue<>();
+        Stack<Teller> copyTeller = new Stack<>();
+        boolean passt = true;
+        while (!biberschlange.isEmpty()){
+            if (tellerstapel.isEmpty()){
+                passt = false;
+                break;
+            }
+            if (biberschlange.front().getIsGross() != tellerstapel.top().getIsFlacherTeller()){
+                passt = false;
+            }
+            copyTeller.push(tellerstapel.top());
+            copyBiber.enqueue(biberschlange.front());
+
+            tellerstapel.pop();
+            biberschlange.dequeue();
         }
-        return false;
+
+        //Reset Queues
+        while (!tellerstapel.isEmpty()){
+            copyTeller.push(tellerstapel.top());
+            tellerstapel.pop();
+        }
+        while (!biberschlange.isEmpty()){
+            copyBiber.enqueue(biberschlange.front());
+            biberschlange.dequeue();
+        }
+        while (!copyBiber.isEmpty()){
+            biberschlange.enqueue(copyBiber.front());
+            copyBiber.dequeue();
+        }
+        while (!copyTeller.isEmpty()){
+            tellerstapel.push(copyTeller.top());
+            copyTeller.pop();
+        }
+
+        return passt;
     }
 
     public Stack<Teller> getTellerstapel() {
@@ -49,11 +82,11 @@ public class Essensausgabe
         programm.biberHinzufuegen(new Biber(false));
         programm.biberHinzufuegen(new Biber(true));
 
+
         programm.tellerHinzufuegen(new Teller(false));
         programm.tellerHinzufuegen(new Teller(true));
         programm.tellerHinzufuegen(new Teller(true));
         programm.tellerHinzufuegen(new Teller(false));
-        programm.tellerHinzufuegen(new Teller(true));
 
         System.out.println(programm.passtZusammen(programm.getTellerstapel(), programm.getBiberschlange()));;
     }

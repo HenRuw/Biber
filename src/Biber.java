@@ -2,11 +2,6 @@
 public class Biber
 {
     private boolean gross;
-
-    /**
-     * Konstruktor für Objekte der Klasse Biber.
-     * @param pGroesse klein oder gross
-     */
     public Biber(boolean pGross)
     {
         gross = pGross;
@@ -15,7 +10,7 @@ public class Biber
     /**
      * @return groesse klein oder gross
      */
-    public boolean getGroesse()
+    public boolean getIsGross()
     {
         return gross;
     }

@@ -5,7 +5,7 @@ public class Teller {
         this.flacherTeller = flacherTeller;
     }
 
-    public boolean getFlacherTeller() {
+    public boolean getIsFlacherTeller() {
         return flacherTeller;
     }
 }
