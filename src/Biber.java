@@ -1,7 +1,7 @@
 
 public class Biber
 {
-    private boolean gross;
+    private final boolean gross;
     public Biber(boolean pGross)
     {
         gross = pGross;

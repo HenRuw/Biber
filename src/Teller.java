@@ -1,5 +1,5 @@
 public class Teller {
-    private boolean flacherTeller;
+    private final boolean flacherTeller;
 
     public Teller(boolean flacherTeller) {
         this.flacherTeller = flacherTeller;
